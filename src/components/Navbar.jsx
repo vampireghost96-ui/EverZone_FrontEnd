@@ -2,56 +2,65 @@ import React from "react";
 import { NavLink } from "react-router";
 
 function Navbar() {
-  // This function decides which classes to apply.
-  // If the link is active (isActive is true), it applies the green text class.
+  // Helper to handle active state styling
+  // Uses the new Lime Green color (#84cc16) from your design
   const getLinkClass = ({ isActive }) =>
     isActive
-      ? "text-sm font-bold text-green-600 transition" // Active State (Green)
-      : "text-sm font-semibold text-slate-700 transition hover:text-slate-900"; // Normal State
+      ? "text-sm font-bold text-[#84cc16] transition"
+      : "text-sm font-medium text-slate-600 transition hover:text-slate-900";
 
   return (
-    <header className="sticky top-0 z-50 border-b border-black/5 bg-white/80 backdrop-blur">
-      <nav
-        className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-6 py-4"
-        aria-label="Primary"
-      >
-        {/* Logo - Points to Home */}
-        <NavLink
-          to="/Home"
-          className="text-xl font-extrabold tracking-tight text-slate-900"
-        >
-          {/* If you have a logo image, replace the text below with <img src={logo} alt="EverZone" className="h-10" /> */}
-          <span className="text-slate-400">Ever</span>
-          <span className="text-blue-500">ZONE</span>
-        </NavLink>
+    <header className="sticky top-0 z-50 bg-white py-4">
+      <nav className="mx-auto flex max-w-7xl items-center justify-between px-6 lg:px-8">
+        {/* LEFT: Logo */}
+        <div className="flex  items-center justify-between gap-20">
+          <NavLink to="/Home" className="flex flex-col items-center gap-2">
+            <div className="flex h-15 w-15 items-center justify-center rounded-full border-0.5 border-[#84cc16]">
+              <img
+                src="/src/assets/logo.jpg
+            "
+                alt="Ever Zone Logo"
+              />
+            </div>
+          </NavLink>
 
-        <ul className="flex flex-wrap items-center gap-8">
-          <li>
-            <NavLink to="/Home" className={getLinkClass}>
-              Home
-            </NavLink>
-          </li>
-          <li>
-            <NavLink to="/AboutUs" className={getLinkClass}>
-              About Us
-            </NavLink>
-          </li>
-          <li>
-            <NavLink to="/Services" className={getLinkClass}>
-              Services
-            </NavLink>
-          </li>
-          <li>
-            <NavLink to="/Projects" className={getLinkClass}>
-              Projects
-            </NavLink>
-          </li>
-          <li>
-            <NavLink to="/ContactUs" className={getLinkClass}>
-              Contact Us
-            </NavLink>
-          </li>
-        </ul>
+          {/* CENTER: Navigation Links */}
+          {/* hidden on mobile (md:flex), visible on desktop */}
+          <ul className="hidden items-center gap-8 md:flex">
+            <li>
+              <NavLink to="/Home" className={getLinkClass}>
+                Home
+              </NavLink>
+            </li>
+            <li>
+              <NavLink to="/AboutUs" className={getLinkClass}>
+                About us
+              </NavLink>
+            </li>
+            <li>
+              <NavLink to="/Services" className={getLinkClass}>
+                Services
+              </NavLink>
+            </li>
+            <li>
+              <NavLink to="/Projects" className={getLinkClass}>
+                Projects
+              </NavLink>
+            </li>
+            <li>
+              <NavLink to="/ContactUs" className={getLinkClass}>
+                Contact us
+              </NavLink>
+            </li>
+          </ul>
+        </div>
+
+        {/* RIGHT: Language Switcher */}
+        <div className="flex items-center gap-4 text-sm font-bold">
+          <button className="text-[#84cc16]">EN</button>
+          <span className="text-slate-300">|</span>
+          <button className="text-slate-500 hover:text-slate-900">MM</button>
+        </div>
       </nav>
     </header>
   );
