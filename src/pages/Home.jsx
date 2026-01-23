@@ -3,63 +3,111 @@ import { Link } from "react-router";
 
 function Home() {
   return (
-    <div className="relative w-full">
-      {/* Main Grid Layout 
-        - On mobile (grid-cols-1): Stacks vertically
-        - On desktop (lg:grid-cols-2): Splits 50/50 side by side
-        - min-h-[calc(100vh-64px)]: Ensures it fills the screen height minus the navbar
-      */}
-      <div className="grid min-h-[calc(100vh-64px)] w-full grid-cols-1 lg:grid-cols-2">
+    <div className="relative min-h-[calc(100vh-64px)] w-full bg-white px-6 py-12 lg:px-16 lg:py-20">
+      {/* Main Grid Layout */}
+      <div className="mx-auto grid max-w-7xl grid-cols-1 gap-12 lg:grid-cols-2 lg:items-center">
         {/* LEFT COLUMN: Text Content */}
-        <div className="flex flex-col justify-center bg-white px-8 py-12 sm:px-16 lg:px-24">
-          {/* Main Headlines */}
-          <h1 className="mb-8 text-4xl font-bold leading-tight text-slate-900 sm:text-5xl">
-            Ever Zone Hero Section <br />
-            Ever Zone Hero Section
+        <div className="flex flex-col justify-center">
+          {/* Main Headline */}
+          <h1 className="text-5xl font-bold leading-tight text-slate-700 sm:text-3xl lg:text-4xl">
+            Ever Zone, the service of your desires
           </h1>
 
-          {/* Slogan Box (Grey Background) */}
-          <div className="mb-10 w-full max-w-lg bg-gray-100 p-8 text-slate-700">
-            <p className="leading-relaxed">
-              Company slogan Company slogan Company slogan <br />
-              Company slogan Company slogan Company slogan <br />
-              Company slogan Company slogan Company slogan <br />
-              Company slogan Company slogan Company slogan
-            </p>
-          </div>
+          {/* Subtext */}
+          <p className="mt-8 max-w-lg text-lg leading-relaxed text-slate-600">
+            Engineering is the practice of turning ideas into real-world
+            solutions by combining creativity, math, and problem-solving.
+          </p>
 
-          {/* Action Buttons */}
-          <div className="flex flex-wrap gap-4">
+          {/* Buttons Container */}
+          <div className="mt-10 flex flex-col gap-4 sm:flex-row">
+            {/* 'View our Projects' Button */}
             <Link
               to="/Projects"
-              className="bg-black px-8 py-4 text-sm font-bold text-white transition hover:bg-slate-800"
+              className="group flex w-fit items-center gap-4 rounded-full bg-[#1a455a] py-2 pl-6 pr-2 text-white transition hover:bg-[#153849]"
             >
-              View Projects
+              <span className="font-semibold">View our Projects</span>
+              <div className="flex h-10 w-10 items-center justify-center rounded-full bg-[#84cc16] text-[#1a455a] transition duration-300 group-hover:scale-110">
+                {/* Arrow Right Icon */}
+                <svg
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2.5"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
+                  <path d="M9 18l6-6-6-6" />
+                </svg>
+              </div>
             </Link>
+
+            {/* 'Contact Us' Button */}
             <Link
               to="/ContactUs"
-              className="bg-black px-8 py-4 text-sm font-bold text-white transition hover:bg-slate-800"
+              className="group flex w-fit items-center gap-4 rounded-full bg-[#1a455a] py-2 pl-6 pr-2 text-white transition hover:bg-[#153849]"
             >
-              Contact Us
+              <span className="font-semibold">Contact Us</span>
+              <div className="flex h-10 w-10 items-center justify-center rounded-full bg-[#84cc16] text-[#1a455a] transition duration-300 group-hover:scale-110">
+                <svg
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2.5"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
+                  <path d="M9 18l6-6-6-6" />
+                </svg>
+              </div>
             </Link>
+          </div>
+
+          {/* Social Media Icons (Vertical Stack) */}
+          <div className="mt-16 flex gap-6 lg:flex-col text-slate-600">
+            {/* Facebook Icon */}
+            <a
+              href="#"
+              className="transition hover:text-[#1a455a] hover:scale-110"
+            >
+              <svg className="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
+              </svg>
+            </a>
+            {/* Messenger Icon */}
+            <a
+              href="#"
+              className="transition hover:text-[#1a455a] hover:scale-110"
+            >
+              <svg className="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 0C5.373 0 0 4.974 0 11.111c0 3.498 1.744 6.614 4.469 8.654V24l4.088-2.242c1.092.301 2.246.464 3.443.464 6.627 0 12-4.975 12-11.111C24 4.974 18.627 0 12 0zm1.191 14.963l-3.056-3.255-5.963 3.255 6.546-6.963 3.162 3.255 5.853-3.255-6.542 6.963z" />
+              </svg>
+            </a>
+            {/* Instagram Icon */}
+            <a
+              href="#"
+              className="transition hover:text-[#1a455a] hover:scale-110"
+            >
+              <svg className="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.948-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+              </svg>
+            </a>
           </div>
         </div>
 
-        {/* RIGHT COLUMN: Visual Introduction */}
-        {/* Currently a grey background as per your wireframe. You can add an <img> tag inside here later. */}
-        <div className="flex items-center justify-center bg-[#bfbfbf] p-12 text-center text-slate-900">
-          <h2 className="text-3xl font-bold">Strong visual introduction</h2>
+        {/* RIGHT COLUMN: Image */}
+        <div className="relative flex items-center justify-center">
+          <img
+            src="/src/assets/HeroImg.png"
+            alt="EverZone Engineer"
+            className="h-auto w-full rounded-3xl object-cover shadow-2xl"
+          />
         </div>
       </div>
-
-      {/* Floating Chatbot Button (Bottom Right) */}
-      <button
-        className="fixed bottom-8 right-8 flex h-20 w-20 flex-col items-center justify-center rounded-full bg-gray-300 shadow-xl transition hover:bg-gray-400 hover:scale-105"
-        aria-label="Open Chatbot"
-      >
-        <span className="text-xs font-bold text-slate-900">AI</span>
-        <span className="text-[10px] font-bold text-slate-900">Chatbot</span>
-      </button>
     </div>
   );
 }
