@@ -1,61 +1,141 @@
-import React from "react";
+import React, { useState } from "react";
 
 function Services() {
-  // Data for the services to keep the code clean and easy to update
-  const servicesList = [
-    { title: "Road & Bridge Construction", desc: "Short Description" },
-    { title: "Earth Works", desc: "Short Description" },
+  // State to track which service is currently open (defaulting to null or 0)
+  const [openIndex, setOpenIndex] = useState(0);
+
+  // Data Array
+  const services = [
     {
-      title: "Building Construction (Residential, Commercial, Industrial)",
-      desc: "Short Description",
+      id: 0,
+      number: "01",
+      title: "Road and Bridge Construction",
+      description:
+        "Road and bridge construction involves designing and building safe, durable transportation infrastructure that supports efficient travel and ensures longevity. It requires precise planning, quality materials, and adherence to engineering standards to withstand heavy loads.",
+      image:
+        "https://images.unsplash.com/photo-1545558014-8692077e9b5c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80", // Placeholder bridge image
     },
-    { title: "Steel Structure Works", desc: "Short Description" },
     {
+      id: 1,
+      number: "02",
+      title: "Earth Works",
+      description:
+        "Comprehensive earthworks including excavation, land grading, and soil stabilization to prepare foundations for major construction projects.",
+      image:
+        "https://images.unsplash.com/photo-1588612502660-f6555b76d05f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+    },
+    {
+      id: 2,
+      number: "03",
+      title: "Building Construction",
+      description:
+        "End-to-end building construction services for residential, commercial, and industrial structures, focusing on safety, sustainability, and modern design.",
+      image:
+        "https://images.unsplash.com/photo-1503387762-592deb58ef4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+    },
+    {
+      id: 3,
+      number: "04",
+      title: "Steel Structure Works",
+      description:
+        "Fabrication and erection of high-quality steel structures for warehouses, factories, and high-rise buildings, ensuring structural integrity.",
+      image:
+        "https://images.unsplash.com/photo-1535732759880-bbd5c7265e3f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+    },
+    {
+      id: 4,
+      number: "05",
       title: "Fit-Out and Construction Project Management",
-      desc: "Short Description",
+      description:
+        "Professional project management and interior fit-out services to deliver projects on time, within budget, and to the highest quality standards.",
+      image:
+        "https://images.unsplash.com/photo-1504307651254-35680f356dfd?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
     },
   ];
 
+  const toggleService = (index) => {
+    // If clicking the already open one, close it (set to null), otherwise open the new one
+    setOpenIndex(openIndex === index ? null : index);
+  };
+
   return (
-    <div className="relative min-h-screen w-full bg-white pb-20 pt-12">
-      {/* Page Heading */}
-      <h1 className="mb-16 text-center text-3xl font-bold text-black sm:text-4xl">
-        Services we provide
-      </h1>
-
-      {/* Flex Container 
-         - flex-wrap: Allows items to drop to the next line
-         - justify-center: Ensures the bottom row of 2 items is centered (just like your design)
-         - gap-8: Adds space between cards
-      */}
-      <div className="mx-auto flex max-w-7xl flex-wrap justify-center gap-8 px-6">
-        {servicesList.map((service, index) => (
-          // Card Container: fixed width (w-80 or w-96) ensures they look uniform
-          <div key={index} className="flex w-full flex-col sm:w-80 md:w-96">
-            {/* Top: Visual / Image Area (Dark Grey) */}
-            <div className="relative flex h-64 flex-col items-center justify-center bg-[#a6a6a6] p-4 text-center">
-              {/* Placeholder text for the image */}
-              <span className="mb-6 font-semibold text-slate-800">Visual</span>
-
-              {/* Title sits at the bottom of the grey box */}
-              <h3 className="absolute bottom-6 left-0 w-full px-4 text-center text-lg font-bold leading-snug text-black">
-                {service.title}
-              </h3>
-            </div>
-
-            {/* Bottom: Description Area (Light Grey) */}
-            <div className="flex h-32 items-center justify-center bg-[#f2f2f2]">
-              <p className="text-slate-600">{service.desc}</p>
-            </div>
-          </div>
-        ))}
+    <div className="min-h-screen w-full bg-slate-50">
+      {/* 1. Header Section */}
+      <div className="w-full bg-[#1a455a] px-6 pb-32 pt-16 text-center lg:px-16">
+        <h1 className="text-3xl font-medium text-white sm:text-4xl">
+          Services we provide
+        </h1>
       </div>
 
-      {/* Floating Chatbot Button */}
-      <button className="fixed bottom-8 right-8 z-50 flex h-20 w-20 flex-col items-center justify-center rounded-full bg-gray-300 shadow-xl transition hover:scale-105 hover:bg-gray-400">
-        <span className="text-xs font-bold text-slate-900">AI</span>
-        <span className="text-[10px] font-bold text-slate-900">Chatbot</span>
-      </button>
+      {/* 2. Overlapping List Container */}
+      <div className="mx-auto -mt-20 max-w-6xl px-4 sm:px-6 lg:px-8">
+        <div className="overflow-hidden rounded-2xl bg-white shadow-xl">
+          {services.map((service, index) => {
+            const isOpen = openIndex === index;
+
+            return (
+              <div
+                key={service.id}
+                onClick={() => toggleService(index)}
+                className={`cursor-pointer border-b border-gray-100 transition-all duration-300 ease-in-out ${
+                  isOpen
+                    ? "bg-gray-200/50 py-10"
+                    : "bg-white py-8 hover:bg-gray-50"
+                }`}
+              >
+                <div className="px-6 lg:px-12">
+                  {/* Top Row: Number & Title */}
+                  <div className="flex items-center">
+                    {/* Number (Left) */}
+                    <span className="w-12 text-sm font-serif text-slate-500 lg:w-24 lg:text-base">
+                      {service.number}
+                    </span>
+
+                    {/* Title (Center) */}
+                    <h2
+                      className={`flex-1 text-center text-xl text-slate-700 lg:text-2xl ${
+                        isOpen ? "font-medium" : "font-normal"
+                      }`}
+                    >
+                      {service.title}
+                    </h2>
+
+                    {/* Spacer for balance (Right) */}
+                    <span className="w-12 lg:w-24"></span>
+                  </div>
+
+                  {/* Expanded Content: Image & Description */}
+                  {/* We use a max-height transition trick or simply conditional rendering for simplicity */}
+                  {isOpen && (
+                    <div className="mt-10 flex flex-col gap-8 lg:flex-row lg:items-start lg:gap-12 animate-fadeIn">
+                      {/* Left: Image */}
+                      <div className="w-full lg:w-1/2">
+                        <div className="overflow-hidden rounded-lg shadow-md">
+                          <img
+                            src={service.image}
+                            alt={service.title}
+                            className="h-64 w-full object-cover transition-transform duration-500 hover:scale-105"
+                          />
+                        </div>
+                      </div>
+
+                      {/* Right: Description */}
+                      <div className="w-full lg:w-1/2">
+                        <p className="font-serif text-lg leading-relaxed text-slate-600 italic">
+                          {service.description}
+                        </p>
+                      </div>
+                    </div>
+                  )}
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+
+      {/* Bottom spacing */}
+      <div className="h-20"></div>
     </div>
   );
 }

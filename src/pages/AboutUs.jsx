@@ -5,7 +5,7 @@ function AboutUs() {
     <div className="min-h-screen w-full bg-slate-50">
       {/* 1. Dark Blue Header Section */}
       {/* pb-32 adds space at the bottom for the white card to pull up into */}
-      <div className="w-full bg-[#1a455a] px-6 pb-32 pt-16  lg:px-16">
+      <div className="w-full bg-[#1a455a] px-6 pb-32 pt-16 text-center  lg:px-16">
         <h1 className="text-3xl font-medium text-white sm:text-4xl">
           Get to know about us
         </h1>
