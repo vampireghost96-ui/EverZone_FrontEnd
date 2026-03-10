@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import apiClient from "../services/api";
+import { useTranslation, initReactI18next } from "react-i18next";
 
 function Projects() {
   const [projects, setProjects] = useState([]);
@@ -10,6 +11,7 @@ function Projects() {
   const [categories, setCategories] = useState([]);
   const [activeCategory, setActiveCategory] = useState("");
   const [currentIndex, setCurrentIndex] = useState(0);
+  const { t, i18n } = useTranslation();
 
   // Fetch the data
   useEffect(() => {

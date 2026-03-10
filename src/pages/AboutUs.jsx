@@ -1,6 +1,8 @@
 import React from "react";
+import { useTranslation, initReactI18next } from "react-i18next";
 
 function AboutUs() {
+  const { t, i18n } = useTranslation();
   return (
     <div className="min-h-screen w-full bg-slate-50">
       {/* 1. Dark Blue Header Section */}

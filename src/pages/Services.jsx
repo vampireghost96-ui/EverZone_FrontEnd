@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import apiClient from "../services/api";
+import { useTranslation, initReactI18next } from "react-i18next";
 
 function Services() {
   const [services, setServices] = useState([]);
@@ -8,6 +9,7 @@ function Services() {
 
   // Track which service is currently expanded (default to the first one: 0)
   const [expandedIndex, setExpandedIndex] = useState(0);
+  const { t, i18n } = useTranslation();
 
   useEffect(() => {
     const fetchServices = async () => {

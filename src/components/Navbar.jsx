@@ -1,13 +1,26 @@
 import React from "react";
 import { NavLink } from "react-router";
+import { useTranslation } from "react-i18next";
 
 function Navbar() {
+  const { t, i18n } = useTranslation();
+
   // Helper to handle active state styling
   // Uses the new Lime Green color (#84cc16) from your design
   const getLinkClass = ({ isActive }) =>
     isActive
       ? "text-sm font-bold text-[#84cc16] transition"
       : "text-sm font-medium text-slate-600 transition hover:text-slate-900";
+
+  const changeLanguage = async (language) => {
+    await i18n.changeLanguage(language);
+    localStorage.setItem("lng", language);
+  };
+
+  const getLanguageClass = (language) =>
+    i18n.resolvedLanguage === language
+      ? "text-[#84cc16]"
+      : "text-slate-500 transition hover:text-slate-900";
 
   return (
     <header className="sticky top-0 z-50 bg-white py-4">
@@ -29,27 +42,27 @@ function Navbar() {
           <ul className="hidden items-center gap-8 md:flex">
             <li>
               <NavLink to="/Home" className={getLinkClass}>
-                Home
+                {t("navbar.home")}
               </NavLink>
             </li>
             <li>
               <NavLink to="/AboutUs" className={getLinkClass}>
-                About us
+                {t("navbar.aboutUs")}
               </NavLink>
             </li>
             <li>
               <NavLink to="/Services" className={getLinkClass}>
-                Services
+                {t("navbar.services")}
               </NavLink>
             </li>
             <li>
               <NavLink to="/Projects" className={getLinkClass}>
-                Projects
+                {t("navbar.projects")}
               </NavLink>
             </li>
             <li>
               <NavLink to="/ContactUs" className={getLinkClass}>
-                Contact us
+                {t("navbar.contactUs")}
               </NavLink>
             </li>
           </ul>
@@ -57,9 +70,23 @@ function Navbar() {
 
         {/* RIGHT: Language Switcher */}
         <div className="flex items-center gap-4 text-sm font-bold">
-          <button className="text-[#84cc16]">EN</button>
+          <button
+            type="button"
+            onClick={() => changeLanguage("en")}
+            className={getLanguageClass("en")}
+            aria-pressed={i18n.resolvedLanguage === "en"}
+          >
+            EN
+          </button>
           <span className="text-slate-300">|</span>
-          <button className="text-slate-500 hover:text-slate-900">MM</button>
+          <button
+            type="button"
+            onClick={() => changeLanguage("my")}
+            className={getLanguageClass("my")}
+            aria-pressed={i18n.resolvedLanguage === "my"}
+          >
+            MM
+          </button>
         </div>
       </nav>
     </header>

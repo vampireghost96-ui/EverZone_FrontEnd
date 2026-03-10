@@ -1,7 +1,9 @@
 import React from "react";
 import { Link } from "react-router";
+import { useTranslation, initReactI18next } from "react-i18next";
 
 function Home() {
+  const { t, i18n } = useTranslation();
   return (
     <div className="relative min-h-[calc(100vh-64px)] w-full bg-white px-6 py-12 lg:px-16 lg:py-20">
       {/* Main Grid Layout */}

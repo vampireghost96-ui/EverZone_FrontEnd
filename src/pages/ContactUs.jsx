@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import apiClient from "../services/api";
+import { useTranslation, initReactI18next } from "react-i18next";
 
 function ContactUs() {
   // 1. State for form inputs
@@ -13,6 +14,7 @@ function ContactUs() {
   // 2. State for form submission status
   const [status, setStatus] = useState("idle"); // 'idle', 'submitting', 'success', 'error'
   const [errorMessage, setErrorMessage] = useState("");
+  const { t } = useTranslation();
 
   // 3. Handle typing in the input fields
   const handleChange = (e) => {
@@ -56,10 +58,10 @@ function ContactUs() {
       <div className="container mx-auto px-4 max-w-3xl">
         <div className="text-center mb-12">
           <h1 className="text-4xl font-bold text-[#113243] mb-4">
-            Get in Touch
+            {t("contactUs.title")}
           </h1>
           <p className="text-lg text-slate-600">
-            Have a project in mind? We'd love to hear about it.
+            {t("contactUs.subtitle")}
           </p>
         </div>
 
